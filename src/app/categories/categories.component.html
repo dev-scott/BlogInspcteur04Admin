@@ -1,0 +1,69 @@
+<section class="bg-white dark:bg-gray-100"  >
+
+    <form class=" max-w-screen-xl mx-auto px-4 gap py-2 pt-32 "  #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm)" > 
+    
+        <h1 class="font-semibold leading-none text-3xl  " >{{formStatus}} categorie</h1>
+
+        <input type="text" name="category" class="h-12 w-full rounded-xl outline-none border border-gray-10 px-4 py-2 mt-10" #newCategory='ngModel'  [(ngModel)]="formCategory" required  >
+        <div class="text-purple-700 " *ngIf="newCategory.invalid && newCategory.touched"  > Categorie field is required </div>
+        <button [disabled]="categoryForm.invalid" class="px-6 py-3 mt-10 bg-primary-100 text-white rounded-xl" >{{formStatus}}</button>
+    
+    </form>
+
+
+    <div class=" max-w-screen-xl mx-auto px-4 gap py-10 pt-32 "   > 
+    
+        <div class="flex flex-col">
+            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
+                  <table class="min-w-full text-left text-sm font-light">
+                    <thead class="border-b font-medium dark:border-neutral-500">
+                      <tr>
+                        <th scope="col" class="px-6 py-4">No</th>
+                        <th scope="col" class="px-6 py-4">Category</th>
+                        <th scope="col" class="px-6 py-4">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="border-b dark:border-neutral-500" *ngFor="let category of categoryArray; let i = index" >
+
+                        <td class="whitespace-nowrap px-6 py-4">{{i+1}}</td>
+                        <td class="whitespace-nowrap px-6 py-4">{{category.data.category}}</td>
+                        <td class="whitespace-nowrap px-6 py-4"><button class="px-4 py-1 bg-primary-100 text-white rounded-sm" (click)="onEdit(category.data.category , category.id)" >Edit</button> 
+                        
+                            <button class="px-4 py-1 bg-primary-100 mr-3 text-white rounded-sm" (click)="onDelete( category.id)" >Delete</button>
+
+                        </td>
+                        
+
+               
+                      </tr>
+               
+                      <!-- <tr class="border-b dark:border-neutral-500">
+                        <td class="whitespace-nowrap px-6 py-4 font-medium">3</td>
+                        <td class="whitespace-nowrap px-6 py-4">Larry</td>
+                        <td class="whitespace-nowrap px-6 py-4">Wild</td>
+                        <td class="whitespace-nowrap px-6 py-4">@twitter</td>
+                      </tr> -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+        </div>
+
+    
+
+    
+
+</section>
+
+
+
+
+
+
+
