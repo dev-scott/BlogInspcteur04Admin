@@ -156,7 +156,7 @@
     "symbol-observable" "4.0.0"
     "yargs" "17.7.2"
 
-"@angular/common@^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0", "@angular/common@^16.0.0", "@angular/common@>=16.0.0-0", "@angular/common@16.0.3":
+"@angular/common@^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0", "@angular/common@^16.0.0", "@angular/common@>=13", "@angular/common@>=16.0.0-0", "@angular/common@16.0.3":
   "integrity" "sha512-pN1Mz2xwPs9+W3i+wBletdPMJC+exP9dCdy+iSG5pwpvii1jF3CbstHAPE/pmsoUlQ9nN+vrFowDAXVV7FQpWw=="
   "resolved" "https://registry.npmjs.org/@angular/common/-/common-16.0.3.tgz"
   "version" "16.0.3"
@@ -184,7 +184,7 @@
   dependencies:
     "tslib" "^2.3.0"
 
-"@angular/core@^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0", "@angular/core@^16.0.0", "@angular/core@>=16.0.0-0", "@angular/core@16.0.3":
+"@angular/core@^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0", "@angular/core@^16.0.0", "@angular/core@>=13", "@angular/core@>=16.0.0-0", "@angular/core@16.0.3":
   "integrity" "sha512-vaUOLgDk03aKDHX6jtv4NEDB6gEBCXvgTpvsTmDUXcCa9WxyXs4Ak22q9ZyNln8/7UG5Uo1gTn90FlOAh9jHww=="
   "resolved" "https://registry.npmjs.org/@angular/core/-/core-16.0.3.tgz"
   "version" "16.0.3"
@@ -1762,6 +1762,13 @@
   dependencies:
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
+
+"@kolkov/angular-editor@^3.0.0-beta.0":
+  "integrity" "sha512-uUa8FW9lFskfL8rans7YRtUQIVK1Qj8bBT9q1MwPXFZ1t+/KfPk62FL5IuMfcnu28UfKl0J2AnGYwbQe4h+Etw=="
+  "resolved" "https://registry.npmjs.org/@kolkov/angular-editor/-/angular-editor-3.0.0-beta.0.tgz"
+  "version" "3.0.0-beta.0"
+  dependencies:
+    "tslib" "^2.3.0"
 
 "@leichtgewicht/ip-codec@^2.0.1":
   "integrity" "sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A=="

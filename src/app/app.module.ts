@@ -19,6 +19,15 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore'; // Importez AngularFirestoreModule depuis @angular/fire/compat/firestore
 
+// import { AngularEditorComponent } from '@kolkov/angular-editor';
+
+// import {}
+
+import { HttpClientModule } from  '@angular/common/http';
+
+import {ReactiveFormsModule} from '@angular/forms'; 
+
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 import { environment } from 'src/environments/environment.prod';
 
@@ -49,7 +58,10 @@ import { NewPostComponent } from './posts/new-post/new-post.component';
     AppRoutingModule,
     FormsModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularEditorModule,
+    HttpClientModule,
+    ReactiveFormsModule
     
   ], 
   providers: [],

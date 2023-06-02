@@ -1,31 +1,184 @@
-<section class="bg-white dark:bg-gray-100"  >
+<section class="bg-white dark:bg-gray-100">
+  <form
+    [formGroup]="postForm"
+    (ngSubmit)="onSubmit()"
+    class="max-w-screen-xl mx-auto px-4 gap py-2 pt-32"
+  >
+    <h1 class="font-semibold leading-none text-3xl mb-6">Add Post</h1>
 
-    <div class=" max-w-screen-xl mx-auto px-4 gap py-2 pt-32 " > 
+    <!-- <input type="text" name="category" class="h-12 w-full rounded-xl outline-none border border-gray-10 px-4 py-2 mt-10"   required  > -->
 
-    <div class="w-full flex flex-col items-center justify-center h-full" >
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="grid-first-name"
+        >
+          Title
+        </label>
+        <input
+          ngClass="{'bg-primary-100: fc['title'].touched && fc['title'].invalid }"
+          formControlName="title"
+          (keyup)="OnTitleChanged($event)"
+          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+          id="grid-first-name"
+          type="text"
+          placeholder="Jane"
+        />
 
-        <h1 class="mb-3 font-semibold text-3xl leading-tight text-gray-900">New post</h1>
-        <p class="text-sm text-gray-500" >Do you want to add your post  ?</p>
-        <div class="flex items-center justify-between " >
-            <button class="px-4 py-2 rounded-xl border-none outline-none bg-primary-100 text-white " routerLink="/posts/new"> Add Post</button>
-            <button class="px-4 py-2 rounded-xl border-none outline-none bg-primary-100 text-white   " routerLink="/" > Dashboard</button>
+        <!-- <div>
+          <div *ngIf="fc['title'].touched && fc['title'].invalid">
+            Title is required
+          </div>
+        </div> -->
+
+        <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+      </div>
+      <div class="w-full md:w-1/2 px-3">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="grid-last-name"
+        >
+          Permanent Link
+        </label>
+        <input
+          formControlName="permalink"
+          [(ngModel)]="permalink"
+          name="permalink"
+          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          id="grid-last-name"
+          type="text"
+          placeholder="Doe"
+        />
+        <!-- 
+        <div>
+            <div *ngIf="fc['permalink'].touched && fc['permalink'].invalid">
+              Title is required
+            </div>
+          </div> -->
+      </div>
+    </div>
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full px-3">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="grid-password"
+        >
+          Excerpt
+        </label>
+        <textarea
+          formControlName="excerpt"
+          cols="30"
+          rows="10"
+          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          id="grid-password"
+          type="password"
+          placeholder="******************"
+        ></textarea>
+
+        <!-- <div>
+            <div *ngIf="fc['excerpt'].touched && fc['excerpt'].invalid">
+              Title is required
+            </div>
+          </div> -->
+
+        <p class="text-gray-600 text-xs italic">
+          Make it as long and as crazy as you'd like
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-wrap -mx-3 mb-2">
+      <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="grid-city"
+        >
+          Post Image
+        </label>
+        <input
+          formControlName="postImg"
+          (change)="showPreview($event)"
+          accept="image/*"
+          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          id="grid-city"
+          type="file"
+          placeholder="Albuquerque"
+        />
+
+        <!-- <div>
+            <div *ngIf="fc['postImg'].touched && fc['postImg'].invalid">
+              Title is required
+            </div>
+          </div> -->
+
+        <img [src]="imgSrc" alt="" />
+      </div>
+      <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="grid-state"
+        >
+          Please select a post category
+        </label>
+        <div class="relative">
+          <select
+            formControlName="category"
+            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            id="grid-state"
+          >
+            <option *ngFor="let category of categories">
+              {{ category.data.category }}
+            </option>
+          </select>
+          <div
+            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              />
+            </svg>
+          </div>
         </div>
+      </div>
 
+      <div class="w-full mt-8 px-3">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="grid-password"
+        >
+          Content
+        </label>
+        <!-- <textarea cols="30" rows="10"   class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="password" placeholder="******************"></textarea> -->
+
+        <angular-editor
+          formControlName="content"
+          placeholder="Add your content here"
+        >
+        </angular-editor>
+
+        <p class="text-gray-600 text-xs italic">
+          Make it as long and as crazy as you'd like
+        </p>
+      </div>
     </div>
+
+    <!-- <div class="text-purple-700 "   > Categorie field is required </div> -->
+    <button
+      class="px-6 py-3 cursor-pointer mt-10 bg-primary-100 text-white rounded-xl"
     
-    </div>
-
-
- 
-    
-
-    
-
+    >
+      Add post
+    </button>
+    <button
+      class="px-6 py-3 mt-10 bg-primary-100 text-white rounded-xl ml-6"
+      routerLink="/posts"
+    >
+      Back to posts
+    </button>
+  </form>
 </section>
-
-
-
-
-
-
-
