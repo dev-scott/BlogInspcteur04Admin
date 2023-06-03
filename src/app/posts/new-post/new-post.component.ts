@@ -11,6 +11,7 @@ import { CategoriesService } from 'src/app/services/categories.service';
 export class NewPostComponent implements OnInit {
 
   permalink:string=''
+  
 
   imgSrc:any = './assets/placeholder.png';
 
